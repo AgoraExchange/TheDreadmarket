@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+  <title>Dreadmarket</title>
+  <meta
+    name="description"
+    content="Dreadmarket — a maritime-industrial crypto marketplace interface."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-scene">
+    <div class="bg-overlay"></div>
+    <div class="fog fog-1"></div>
+    <div class="fog fog-2"></div>
+    <div class="grain"></div>
+  </div>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-btn mobile-only" id="menuToggle" aria-label="Open menu">
+          ☰
+        </button>
+
+        <div class="brand-block">
+          <div class="brand-mark">⛭</div>
+          <div>
+            <h1 class="brand-title">Dreadmarket</h1>
+            <p class="brand-subtitle">Black tide exchange • secure harbor</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="top-nav desktop-only">
+        <button class="nav-link active" data-panel="homePanel">Home</button>
+        <button class="nav-link" data-panel="bazaarPanel">Bazaar</button>
+        <button class="nav-link" data-panel="walletPanel">Wallet</button>
+        <button class="nav-link nav-with-badge" data-panel="ordersPanel">
+          Orders
+          <span class="nav-badge" id="ordersBadge">3</span>
+        </button>
+        <button class="nav-link" data-panel="vendorsPanel">Vendors</button>
+        <button class="nav-link" data-panel="settingsPanel">Settings</button>
+      </nav>
+
+      <div class="topbar-right">
+        <div class="signal-pill">
+          <span class="signal-dot"></span>
+          Live
+        </div>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <div class="sidebar-head">
+          <div>
+            <p class="eyebrow">Manifest</p>
+            <h2>Navigation</h2>
+          </div>
+          <button class="icon-btn mobile-only" id="closeSidebar" aria-label="Close menu">
+            ✕
+          </button>
+        </div>
+
+        <div class="mobile-nav mobile-only">
+          <button class="side-link active" data-panel="homePanel">Home</button>
+          <button class="side-link" data-panel="bazaarPanel">Bazaar</button>
+          <button class="side-link" data-panel="walletPanel">Wallet</button>
+          <button class="side-link nav-with-badge" data-panel="ordersPanel">
+            Orders
+            <span class="nav-badge" id="ordersBadgeMobile">3</span>
+          </button>
+          <button class="side-link" data-panel="vendorsPanel">Vendors</button>
+          <button class="side-link" data-panel="settingsPanel">Settings</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="side-section">
+          <p class="eyebrow">Categories</p>
+          <div class="category-list">
+            <button class="category-btn active" data-category="all">All Cargo</button>
+            <button class="category-btn" data-category="vaults">Vaults</button>
+            <button class="category-btn" data-category="kits">Field Kits</button>
+            <button class="category-btn" data-category="tools">Tools</button>
+            <button class="category-btn" data-category="documents">Documents</button>
+            <button class="category-btn" data-category="digital">Digital Goods</button>
+            <button class="category-btn" data-category="access">Access Keys</button>
+            <button class="category-btn" data-category="luxury">Luxury Stock</button>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="side-section captain-card">
+          <p class="eyebrow">Owner Seal</p>
+          <h3>Captain Dread</h3>
+          <p class="muted">
+            Harbor master of the market. Maximum trust. Permanent seal.
+          </p>
+          <div class="trust-badge max">MAX TRUST</div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <main class="main-content">
+      <section class="stats-grid">
+        <article class="stat-card">
+          <p class="stat-label">Welcome Back</p>
+          <h3 id="welcomeName">swiping.cc</h3>
+          <span class="stat-note">Marked trader</span>
+        </article>
+
+        <article class="stat-card">
+          <p class="stat-label">Total Orders</p>
+          <h3 id="orderCount">1,824,353</h3>
+          <span class="stat-note">Across all manifests</span>
+        </article>
+
+        <article class="stat-card">
+          <p class="stat-label">Wallet Balance</p>
+          <h3 id="walletBalance">$2,456,575</h3>
+          <span class="stat-note">Dread escrow reserve</span>
+        </article>
+
+        <article class="stat-card">
+          <p class="stat-label">Trust Level</p>
+          <h3>Dread Admiral</h3>
+          <span class="stat-note accent">Ledger-sealed</span>
+        </article>
+      </section>
+
+      <section class="hero-banner panel active-panel" id="homePanel">
+        <div class="hero-copy">
+          <p class="eyebrow">Mythic • Dangerous • Transactional</p>
+          <h2>Trade where the black tide remembers every deal.</h2>
+          <p class="hero-text">
+            Dreadmarket is a maritime-industrial exchange built for operators,
+            collectors, brokers, and sealed vendors. Enter the harbor, move
+            cargo, track orders, and build trust under the watch of the ledger.
+          </p>
+
+          <div class="hero-actions">
+            <button class="primary-btn" data-panel-target="bazaarPanel">Enter Bazaar</button>
+            <button class="ghost-btn" data-panel-target="walletPanel">View Wallet</button>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="mini-terminal">
+            <div class="terminal-head">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="terminal-body" id="activityFeed">
+              <p><span class="feed-time">21:04</span> Harbor relay initialized.</p>
+              <p><span class="feed-time">21:05</span> Vendor seal verified: Captain Dread.</p>
+              <p><span class="feed-time">21:06</span> Escrow vault synchronized.</p>
+              <p><span class="feed-time">21:07</span> Tide-rune ledger ready.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel-grid panel active-panel" id="bazaarPanel" hidden>
+        <div class="panel-header-row">
+          <div>
+            <p class="eyebrow">Featured Cargo</p>
+            <h2 class="section-title">Bazaar</h2>
+          </div>
+          <div class="search-wrap">
+            <input type="text" id="marketSearch" placeholder="Search cargo, vendor, category..." />
+          </div>
+        </div>
+
+        <div class="market-grid" id="marketGrid">
+          <article class="listing-card" data-category="tools" data-name="Harpoon Recon Kit">
+            <div class="listing-top">
+              <span class="listing-tag">Tools</span>
+              <span class="listing-price price-text">$4,250</span>
+            </div>
+            <h3>Harpoon Recon Kit</h3>
+            <p class="listing-copy">Compact field package for maritime recon workflows and sealed operational prep.</p>
+            <div class="listing-meta">
+              <span>Vendor: Blackwake</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Harpoon Recon Kit" data-price="4250">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="tools" data-name="Wreckline Tool Chest">
+            <div class="listing-top">
+              <span class="listing-tag">Tools</span>
+              <span class="listing-price price-text">$6,900</span>
+            </div>
+            <h3>Wreckline Tool Chest</h3>
+            <p class="listing-copy">Heavy-duty sealed chest packed with black-port service utilities and industrial fittings.</p>
+            <div class="listing-meta">
+              <span>Vendor: Iron Reef</span>
+              <span class="trust-pill">Trust: Medium</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Wreckline Tool Chest" data-price="6900">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="tools" data-name="Tidebreaker Signal Hammer">
+            <div class="listing-top">
+              <span class="listing-tag">Tools</span>
+              <span class="listing-price price-text">$5,480</span>
+            </div>
+            <h3>Tidebreaker Signal Hammer</h3>
+            <p class="listing-copy">Forged breach-grade utility tool built for rough harbor work and storm-side deployment.</p>
+            <div class="listing-meta">
+              <span>Vendor: Tideforge</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Tidebreaker Signal Hammer" data-price="5480">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="vaults" data-name="Abyss Vault Locker">
+            <div class="listing-top">
+              <span class="listing-tag">Vaults</span>
+              <span class="listing-price price-text">$12,800</span>
+            </div>
+            <h3>Abyss Vault Locker</h3>
+            <p class="listing-copy">Premium encrypted storage tier with storm-sealed transaction memory.</p>
+            <div class="listing-meta">
+              <span>Vendor: Saltveil</span>
+              <span class="trust-pill">Trust: Elite</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Abyss Vault Locker" data-price="12800">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="vaults" data-name="Blackwater Cold Vault">
+            <div class="listing-top">
+              <span class="listing-tag">Vaults</span>
+              <span class="listing-price price-text">$18,950</span>
+            </div>
+            <h3>Blackwater Cold Vault</h3>
+            <p class="listing-copy">Deep reserve compartment with reinforced escrow layers and frost-sealed archive memory.</p>
+            <div class="listing-meta">
+              <span>Vendor: Saltveil</span>
+              <span class="trust-pill">Trust: Elite</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Blackwater Cold Vault" data-price="18950">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="vaults" data-name="Dread Reserve Chamber">
+            <div class="listing-top">
+              <span class="listing-tag">Vaults</span>
+              <span class="listing-price price-text">$27,400</span>
+            </div>
+            <h3>Dread Reserve Chamber</h3>
+            <p class="listing-copy">Founder-tier reserve chamber for high-value holdings under permanent harbor seal.</p>
+            <div class="listing-meta">
+              <span>Vendor: Captain Dread</span>
+              <span class="trust-pill">Trust: MAX</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Dread Reserve Chamber" data-price="27400">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="documents" data-name="Sealed Tide Ledger">
+            <div class="listing-top">
+              <span class="listing-tag">Documents</span>
+              <span class="listing-price price-text">$1,950</span>
+            </div>
+            <h3>Sealed Tide Ledger</h3>
+            <p class="listing-copy">Curated manifest archive with verified seals and bone-marked indexing.</p>
+            <div class="listing-meta">
+              <span>Vendor: Iron Reef</span>
+              <span class="trust-pill">Trust: Medium</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Sealed Tide Ledger" data-price="1950">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="documents" data-name="Harrow Bay Register">
+            <div class="listing-top">
+              <span class="listing-tag">Documents</span>
+              <span class="listing-price price-text">$2,740</span>
+            </div>
+            <h3>Harrow Bay Register</h3>
+            <p class="listing-copy">Offshore record index containing port entries, dock tags, and shadow manifests.</p>
+            <div class="listing-meta">
+              <span>Vendor: Harrow Bay</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Harrow Bay Register" data-price="2740">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="documents" data-name="Bone Ink Archive">
+            <div class="listing-top">
+              <span class="listing-tag">Documents</span>
+              <span class="listing-price price-text">$3,380</span>
+            </div>
+            <h3>Bone Ink Archive</h3>
+            <p class="listing-copy">Premium parchment-styled archive set with layered seal references and maritime indexing.</p>
+            <div class="listing-meta">
+              <span>Vendor: Ledger Nine</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Bone Ink Archive" data-price="3380">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="digital" data-name="Deadwater Signal Pack">
+            <div class="listing-top">
+              <span class="listing-tag">Digital</span>
+              <span class="listing-price price-text">$3,700</span>
+            </div>
+            <h3>Deadwater Signal Pack</h3>
+            <p class="listing-copy">High-grade signal routing bundle with maritime-industrial interface skins.</p>
+            <div class="listing-meta">
+              <span>Vendor: Deadwater</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Deadwater Signal Pack" data-price="3700">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="digital" data-name="Stormglass Relay Suite">
+            <div class="listing-top">
+              <span class="listing-tag">Digital</span>
+              <span class="listing-price price-text">$5,100</span>
+            </div>
+            <h3>Stormglass Relay Suite</h3>
+            <p class="listing-copy">Multi-channel relay console with encrypted signal views and storm-blue operator themes.</p>
+            <div class="listing-meta">
+              <span>Vendor: Ghost Current</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Stormglass Relay Suite" data-price="5100">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="digital" data-name="Ghost Harbor Skin Pack">
+            <div class="listing-top">
+              <span class="listing-tag">Digital</span>
+              <span class="listing-price price-text">$1,640</span>
+            </div>
+            <h3>Ghost Harbor Skin Pack</h3>
+            <p class="listing-copy">Premium visual theme bundle with abyssal overlays, fog shaders, and bronze rune accents.</p>
+            <div class="listing-meta">
+              <span>Vendor: Ghost Current</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Ghost Harbor Skin Pack" data-price="1640">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="access" data-name="Stormport Access Key">
+            <div class="listing-top">
+              <span class="listing-tag">Access</span>
+              <span class="listing-price price-text">$8,120</span>
+            </div>
+            <h3>Stormport Access Key</h3>
+            <p class="listing-copy">Gate credential for restricted piers, sealed vendor lanes, and hidden market channels.</p>
+            <div class="listing-meta">
+              <span>Vendor: Harrow Bay</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Stormport Access Key" data-price="8120">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="access" data-name="Obsidian Dock Pass">
+            <div class="listing-top">
+              <span class="listing-tag">Access</span>
+              <span class="listing-price price-text">$9,420</span>
+            </div>
+            <h3>Obsidian Dock Pass</h3>
+            <p class="listing-copy">Clearance pass for private slips, vault corridors, and shielded trade corridors.</p>
+            <div class="listing-meta">
+              <span>Vendor: Blackwake</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Obsidian Dock Pass" data-price="9420">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="access" data-name="Tide Rune Gate Token">
+            <div class="listing-top">
+              <span class="listing-tag">Access</span>
+              <span class="listing-price price-text">$6,680</span>
+            </div>
+            <h3>Tide Rune Gate Token</h3>
+            <p class="listing-copy">Glyph-sealed token recognized by hidden harbor systems and rune-coded lanes.</p>
+            <div class="listing-meta">
+              <span>Vendor: Ledger Nine</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Tide Rune Gate Token" data-price="6680">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="luxury" data-name="Bronze Seal Membership">
+            <div class="listing-top">
+              <span class="listing-tag">Luxury</span>
+              <span class="listing-price price-text">$24,500</span>
+            </div>
+            <h3>Bronze Seal Membership</h3>
+            <p class="listing-copy">Prestige harbor membership with elevated queueing, private slips, and premium trade rooms.</p>
+            <div class="listing-meta">
+              <span>Vendor: Captain Dread</span>
+              <span class="trust-pill">Trust: MAX</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Bronze Seal Membership" data-price="24500">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="luxury" data-name="Aurelian Harbor Suite">
+            <div class="listing-top">
+              <span class="listing-tag">Luxury</span>
+              <span class="listing-price price-text">$31,700</span>
+            </div>
+            <h3>Aurelian Harbor Suite</h3>
+            <p class="listing-copy">Private trade suite with direct vault routing, concierge queue priority, and sealed brass décor.</p>
+            <div class="listing-meta">
+              <span>Vendor: Saltveil</span>
+              <span class="trust-pill">Trust: Elite</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Aurelian Harbor Suite" data-price="31700">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="luxury" data-name="Ivory Ledger Crest">
+            <div class="listing-top">
+              <span class="listing-tag">Luxury</span>
+              <span class="listing-price price-text">$14,880</span>
+            </div>
+            <h3>Ivory Ledger Crest</h3>
+            <p class="listing-copy">Bone-toned elite market insignia reserved for high-value buyers and sealed inner-circle traders.</p>
+            <div class="listing-meta">
+              <span>Vendor: Ledger Nine</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Ivory Ledger Crest" data-price="14880">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="kits" data-name="Deckhand Field Kit">
+            <div class="listing-top">
+              <span class="listing-tag">Field Kits</span>
+              <span class="listing-price price-text">$2,860</span>
+            </div>
+            <h3>Deckhand Field Kit</h3>
+            <p class="listing-copy">Entry-grade operational kit for harbor runners, deck crews, and quick manifest tasks.</p>
+            <div class="listing-meta">
+              <span>Vendor: Tideforge</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Deckhand Field Kit" data-price="2860">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="kits" data-name="Quartermaster Sealed Pack">
+            <div class="listing-top">
+              <span class="listing-tag">Field Kits</span>
+              <span class="listing-price price-text">$7,950</span>
+            </div>
+            <h3>Quartermaster Sealed Pack</h3>
+            <p class="listing-copy">Mid-tier sealed pack containing bonded tools, dry cargo modules, and route accessories.</p>
+            <div class="listing-meta">
+              <span>Vendor: Blackwake</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Quartermaster Sealed Pack" data-price="7950">Acquire</button>
+          </article>
+
+          <article class="listing-card" data-category="kits" data-name="Ghost Current Recovery Kit">
+            <div class="listing-top">
+              <span class="listing-tag">Field Kits</span>
+              <span class="listing-price price-text">$6,120</span>
+            </div>
+            <h3>Ghost Current Recovery Kit</h3>
+            <p class="listing-copy">Specialist retrieval pack engineered for dark port recovery runs and weathered cargo extractions.</p>
+            <div class="listing-meta">
+              <span>Vendor: Ghost Current</span>
+              <span class="trust-pill">Trust: High</span>
+            </div>
+            <button class="primary-btn buy-btn" data-item="Ghost Current Recovery Kit" data-price="6120">Acquire</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel wallet-panel panel active-panel" id="walletPanel" hidden>
+        <div class="panel-header-row">
+          <div>
+            <p class="eyebrow">Escrow & Reserve</p>
+            <h2 class="section-title">Wallet</h2>
+          </div>
+        </div>
+
+        <div class="wallet-layout">
+          <article class="wallet-main-card">
+            <p class="stat-label">Available Balance</p>
+            <h2 class="wallet-big" id="walletBig">$2,456,575</h2>
+            <p class="muted">Secured in the abyssal vault reserve.</p>
+
+            <div class="wallet-actions">
+              <button class="primary-btn wallet-action" data-action="deposit">Deposit</button>
+              <button class="ghost-btn wallet-action" data-action="withdraw">Withdraw</button>
+              <button class="ghost-btn wallet-action" data-action="trade">Trade</button>
+            </div>
+          </article>
+
+          <article class="wallet-side-card">
+            <p class="eyebrow">Recent Movement</p>
+            <div class="tx-list" id="txList">
+              <div class="tx-item">
+                <span>Escrow release</span>
+                <strong>+$18,400</strong>
+              </div>
+              <div class="tx-item">
+                <span>Vault acquisition</span>
+                <strong>-$12,800</strong>
+              </div>
+              <div class="tx-item">
+                <span>Private harbor fee</span>
+                <strong>-$2,200</strong>
+              </div>
+              <div class="tx-item">
+                <span>Signal pack resale</span>
+                <strong>+$9,750</strong>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel orders-panel panel active-panel" id="ordersPanel" hidden>
+        <div class="panel-header-row">
+          <div>
+            <p class="eyebrow">Recorded Cargo</p>
+            <h2 class="section-title">Orders</h2>
+          </div>
+        </div>
+
+        <div class="orders-list" id="ordersList">
+          <article class="order-row">
+            <div class="order-main">
+              <h3>Bronze Seal Membership</h3>
+              <p>Vendor: Captain Dread</p>
+              <p>Price: $24,500</p>
+              <p>Purchased: Mar 28, 2026 • 9:08 PM</p>
+            </div>
+            <div class="order-side">
+              <span class="status shipped">Sealed</span>
+            </div>
+          </article>
+
+          <article class="order-row">
+            <div class="order-main">
+              <h3>Deadwater Signal Pack</h3>
+              <p>Vendor: Deadwater</p>
+              <p>Price: $3,700</p>
+              <p>Purchased: Mar 28, 2026 • 8:42 PM</p>
+            </div>
+            <div class="order-side">
+              <span class="status pending">Pending Tide</span>
+            </div>
+          </article>
+
+          <article class="order-row">
+            <div class="order-main">
+              <h3>Abyss Vault Locker</h3>
+              <p>Vendor: Saltveil</p>
+              <p>Price: $12,800</p>
+              <p>Purchased: Mar 28, 2026 • 7:59 PM</p>
+            </div>
+            <div class="order-side">
+              <span class="status delivered">Delivered</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel vendors-panel panel active-panel" id="vendorsPanel" hidden>
+        <div class="panel-header-row">
+          <div>
+            <p class="eyebrow">Market Seals</p>
+            <h2 class="section-title">Vendors</h2>
+          </div>
+        </div>
+
+        <div class="vendor-grid">
+          <article class="vendor-card featured">
+            <div class="vendor-head">
+              <h3>Captain Dread</h3>
+              <span class="trust-badge max">MAX TRUST</span>
+            </div>
+            <p class="muted">Market founder and harbor sovereign. All flagship listings carry permanent ledger seal.</p>
+          </article>
+
+          <article class="vendor-card">
+            <div class="vendor-head">
+              <h3>Blackwake</h3>
+              <span class="trust-badge">HIGH</span>
+            </div>
+            <p class="muted">Recon, kits, and ship-grade trade stock.</p>
+          </article>
+
+          <article class="vendor-card">
+            <div class="vendor-head">
+              <h3>Saltveil</h3>
+              <span class="trust-badge elite">ELITE</span>
+            </div>
+            <p class="muted">Luxury vaults, bronze goods, and sealed reserve products.</p>
+          </article>
+
+          <article class="vendor-card">
+            <div class="vendor-head">
+              <h3>Deadwater</h3>
+              <span class="trust-badge">HIGH</span>
+            </div>
+            <p class="muted">Signal packs, obscure wares, and ghost-port cargo.</p>
+          </article>
+
+          <article class="vendor-card">
+            <div class="vendor-head">
+              <h3>Iron Reef</h3>
+              <span class="trust-badge">MEDIUM</span>
+            </div>
+            <p class="muted">Document caches, ledger cargo, and ironbound port manifests.</p>
+          </article>
+
+          <article class="vendor-card">
+            <div class="vendor-head">
+              <h3>Harrow Bay</h3>
+              <span class="trust-badge">HIGH</span>
+            </div>
+            <p class="muted">Access routes, hidden pier tokens, and restricted harbor credentials.</p>
+          </article>
+
+          <article class="vendor-card">
+            <div class="vendor-head">
+              <h3>Ghost Current</h3>
+              <span class="trust-badge">HIGH</span>
+            </div>
+            <p class="muted">Digital relay packs, ghost harbor skins, and recovery systems.</p>
+          </article>
+
+          <article class="vendor-card">
+            <div class="vendor-head">
+              <h3>Ledger Nine</h3>
+              <span class="trust-badge">HIGH</span>
+            </div>
+            <p class="muted">Bone-ink records, rune gate access, and premium sealed insignias.</p>
+          </article>
+
+          <article class="vendor-card">
+            <div class="vendor-head">
+              <h3>Tideforge</h3>
+              <span class="trust-badge">HIGH</span>
+            </div>
+            <p class="muted">Forged tools, deck kits, and hardened stormside utility hardware.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel settings-panel panel active-panel" id="settingsPanel" hidden>
+        <div class="panel-header-row">
+          <div>
+            <p class="eyebrow">Owner Controls</p>
+            <h2 class="section-title">Settings</h2>
+          </div>
+        </div>
+
+        <div class="settings-grid">
+          <article class="settings-card">
+            <p class="eyebrow">History Control</p>
+            <h3>Purchase History</h3>
+            <p class="muted">Clear all custom purchases, reset bought buttons, and wipe your demo trail.</p>
+            <button class="primary-btn full-btn" id="clearPurchaseHistoryBtn">Clear Purchase History</button>
+          </article>
+
+          <article class="settings-card">
+            <p class="eyebrow">Market Badge</p>
+            <h3>Orders Badge Count</h3>
+            <p class="muted">This now mirrors the live number of order rows.</p>
+            <div class="settings-inline">
+              <input type="number" id="badgeCountInput" min="0" max="999" value="3" disabled />
+              <button class="ghost-btn" id="saveBadgeCountBtn">Sync Badge</button>
+            </div>
+          </article>
+
+          <article class="settings-card">
+            <p class="eyebrow">Market Pricing</p>
+            <h3>Global Sale Mode</h3>
+            <p class="muted">Toggle sale pricing across the bazaar so you can demo purchases with markdown tags.</p>
+            <div class="settings-inline">
+              <button class="ghost-btn" id="toggleSaleModeBtn">Enable Sale Mode</button>
+            </div>
+          </article>
+
+          <article class="settings-card">
+            <p class="eyebrow">Show Control</p>
+            <h3>Quick Demo Reset</h3>
+            <p class="muted">Reset wallet, orders, transactions, badge count, and sales back to market default.</p>
+            <button class="primary-btn full-btn danger-btn" id="fullDemoResetBtn">Full Demo Reset</button>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <div class="modal-backdrop" id="buyModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Confirm Cargo</p>
+          <h3 id="modalItemName">Item</h3>
+        </div>
+        <button class="icon-btn" id="closeModal" aria-label="Close modal">✕</button>
+      </div>
+
+      <p class="muted">
+        This marketplace interface is for presentation and front-end experience only.
+      </p>
+
+      <div class="confirm-box">
+        <div class="confirm-row">
+          <span>Listing</span>
+          <strong id="modalItemLabel">—</strong>
+        </div>
+        <div class="confirm-row">
+          <span>Price</span>
+          <strong id="modalItemPrice">—</strong>
+        </div>
+        <div class="confirm-row">
+          <span>Escrow Route</span>
+          <strong>Harbor Vault</strong>
+        </div>
+      </div>
+
+      <button class="primary-btn full-btn" id="confirmPurchase">Seal Transaction</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="fundsModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow" id="fundsModeLabel">Wallet Route</p>
+          <h3 id="fundsModalTitle">Transfer Funds</h3>
+        </div>
+        <button class="icon-btn" id="closeFundsModal" aria-label="Close funds modal">✕</button>
+      </div>
+
+      <p class="muted" id="fundsModalCopy">
+        Move funds between connected accounts and your market wallet.
+      </p>
+
+      <div class="confirm-box">
+        <div class="funds-field">
+          <label for="fundsAccountSelect">Connected Account</label>
+          <select id="fundsAccountSelect">
+            <option>Blackwake Checking</option>
+            <option>Saltveil Reserve</option>
+            <option>Storm Credit Union</option>
+            <option>Aster Wallet</option>
+            <option>Cold Harbor BTC Vault</option>
+          </select>
+        </div>
+
+        <div class="funds-field" id="fundsAmountField">
+          <label for="fundsAmountInput">Amount</label>
+          <input type="number" id="fundsAmountInput" min="1" step="1" value="5000" />
+        </div>
+
+        <div class="funds-field" id="fundsSliderField" hidden>
+          <label for="fundsAmountSlider">Amount Slider</label>
+          <input type="range" id="fundsAmountSlider" min="100" max="50000" step="100" value="5000" />
+          <div class="slider-readout" id="fundsSliderReadout">$5,000</div>
+        </div>
+
+        <div class="funds-field" id="tradeAssetField" hidden>
+          <label for="tradeAssetSelect">Trade Into</label>
+          <select id="tradeAssetSelect">
+            <option value="btc">BTC</option>
+            <option value="eth">ETH</option>
+            <option value="sol">SOL</option>
+            <option value="usdt">USDT</option>
+          </select>
+        </div>
+
+        <div class="funds-progress-wrap" id="fundsProgressWrap" hidden>
+          <div class="funds-progress-bar">
+            <div class="funds-progress-fill" id="fundsProgressFill"></div>
+          </div>
+          <p class="muted funds-progress-text" id="fundsProgressText">Processing transfer...</p>
+        </div>
+      </div>
+
+      <button class="primary-btn full-btn" id="fundsActionBtn">Continue</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
